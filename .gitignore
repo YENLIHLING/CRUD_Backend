@@ -27,3 +27,10 @@
 /DataLayer/obj
 /ModelLayer/obj
 /WepAPI/obj
+/BusinessInterfaceLayer/bin/Debug/net8.0
+/BusinessLogicLayer/bin/Debug/net8.0
+*.lnk
+/BusinessLogicLayer2/obj
+/DataLayer/bin/Debug/net8.0
+/ModelLayer/bin/Debug/net8.0
+/WepAPI/bin/Debug/net8.0

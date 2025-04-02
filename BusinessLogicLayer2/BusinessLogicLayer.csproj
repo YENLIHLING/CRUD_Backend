@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BusinessInterfaceLayer\BusinessInterfaceLayer.csproj" />
+    <ProjectReference Include="..\..\DataLayer\DataLayer.csproj" />
     <ProjectReference Include="..\BusinessInterfaceLayer\BusinessInterfaceLayer.csproj" />
     <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>

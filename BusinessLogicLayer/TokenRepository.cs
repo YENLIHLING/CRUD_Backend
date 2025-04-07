@@ -50,26 +50,6 @@ namespace BusinessLogicLayer
             return Task.FromResult(tokenDataGridList); 
         }
 
-        public Task<string> RetrieveTokenChart()
-        {
-            var tokens = RetrieveTokens();
-
-            var tokenChart = new List<TokenChartModel>();
-
-            tokens.ForEach(x =>
-            {
-                tokenChart.Add(
-                    new TokenChartModel
-                    {
-                        id = x.id,
-                        label = x.name,
-                        value = x.total_supply
-                    });
-            });
-
-            return Task.FromResult(JsonSerializer.Serialize(tokenChart));
-        }
-
         public async Task<int> AddOrUpdateTokenAsync(TokenModel token)
         {
             var tokenSearchResult = (from t in _blockChainContext.token

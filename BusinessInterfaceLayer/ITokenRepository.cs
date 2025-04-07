@@ -9,6 +9,5 @@ namespace BusinessInterfaceLayer
         List<TokenModel> RetrieveTokens();
         Task<int> AddOrUpdateTokenAsync(TokenModel token);
         Task<List<TokenDataGridModel>> RetrieveTokenTable();
-        Task<string> RetrieveTokenChart();
     }
 }

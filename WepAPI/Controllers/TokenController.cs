@@ -34,19 +34,6 @@ namespace WepAPI.Controllers
             }
         }
 
-        [HttpGet("RetrieveTokenChart")]
-        public async Task<string> RetrieveTokenChart()
-        {
-            try
-            {
-                return await iTokenRepository.RetrieveTokenChart();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
         [HttpPost("AddOrUpdateToken")]
         public async Task<IActionResult> AddOrUpdateToken(TokenModel token)
         {

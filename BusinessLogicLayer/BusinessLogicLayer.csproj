@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Backend.lnk" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BusinessInterfaceLayer\BusinessInterfaceLayer.csproj" />
     <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>

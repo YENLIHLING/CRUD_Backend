@@ -10,9 +10,6 @@ namespace BusinessLogicLayer
 {
     public class TokenRepository : ITokenRepository
     {
-        public DateTime LastAccessed { get; set; }
-        public required string LastAccessedBy { get; set; }
-
         private readonly BlockChainContext _blockChainContext;
 
         public TokenRepository(BlockChainContext blockChainContext)
@@ -20,7 +17,7 @@ namespace BusinessLogicLayer
             _blockChainContext = blockChainContext;
         }
 
-        public List<TokenModel> RetrieveTokens()
+        private List<TokenModel> RetrieveTokens()
         {
             return _blockChainContext.token.ToList(); 
         }

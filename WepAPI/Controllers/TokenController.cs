@@ -15,12 +15,6 @@ namespace WepAPI.Controllers
             iTokenRepository = _iTokenRepository;
         }
 
-        [HttpGet(Name = "RetrieveTokens")]
-        public List<TokenModel> RetrieveTokens()
-        {
-            return iTokenRepository.RetrieveTokens(); 
-        }
-
         [HttpGet("RetrieveTokenTable")]
         public async Task<List<TokenDataGridModel>> RetrieveTokenTable()
         {

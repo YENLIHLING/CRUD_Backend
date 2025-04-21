@@ -2,29 +2,26 @@
 using DataLayer;
 using Microsoft.EntityFrameworkCore;
 using ModelLayer;
-using MySqlConnector;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
-    public class TokenRepository : ITokenRepository
+    public class TokenService : ITokenRepository
     {
         private readonly BlockChainContext _blockChainContext;
 
-        public TokenRepository(BlockChainContext blockChainContext)
+        public TokenService(BlockChainContext blockChainContext)
         {
             _blockChainContext = blockChainContext;
         }
 
-        private List<TokenModel> RetrieveTokens()
+        private Task<List<TokenModel>> RetrieveTokens()
         {
-            return _blockChainContext.token.ToList(); 
+            return _blockChainContext.token.ToListAsync(); 
         }
 
-        public Task<List<TokenDataGridModel>> RetrieveTokenTable()
+        public async Task<List<TokenDataGridModel>> RetrieveTokenTable()
         {
-            var tokens = RetrieveTokens();
+            var tokens = await RetrieveTokens();
              
             var totalOfSupply = tokens.Select(x => x.total_supply).Sum();
 
@@ -44,16 +41,16 @@ namespace BusinessLogicLayer
                     }); 
             });
 
-            return Task.FromResult(tokenDataGridList); 
+            return tokenDataGridList;
         }
 
         public async Task<int> AddOrUpdateTokenAsync(TokenModel token)
         {
-            var tokenSearchResult = (from t in _blockChainContext.token
+            var tokenSearchResult = await (from t in _blockChainContext.token
                                     where t.name == token.name
                                     && t.symbol == token.symbol
                                     select t)
-                                    .ToList();
+                                    .ToListAsync();
 
             var tokenModel = new TokenModel
             {
@@ -82,9 +79,8 @@ namespace BusinessLogicLayer
                     entity.total_holders = token.total_holders;
                 }
             }
-            var result = await Task.Run(() => _blockChainContext.SaveChanges()); 
-
-            return result; 
+            
+            return await _blockChainContext.SaveChangesAsync(); 
         }
     }
 }

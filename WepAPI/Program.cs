@@ -1,12 +1,11 @@
 using BusinessInterfaceLayer;
 using BusinessLogicLayer;
 using DataLayer;
-using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<ITokenRepository, TokenService>();
 builder.Services.AddDbContext<BlockChainContext>();
 
 builder.Services.AddControllers();
